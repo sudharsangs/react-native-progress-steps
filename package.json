@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/colbymillerdev/react-native-progress-steps.git"
+    "url": "git+https://github.com/sudharsangs/react-native-progress-steps.git"
   },
   "keywords": [
     "react-native",
@@ -27,9 +27,9 @@
   "author": "Colby Miller",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/colbymillerdev/react-native-progress-steps/issues"
+    "url": "https://github.com/sudharsangs/react-native-progress-steps/issues"
   },
-  "homepage": "https://github.com/colbymillerdev/react-native-progress-steps#readme",
+  "homepage": "https://github.com/sudharsangs/react-native-progress-steps#readme",
   "devDependencies": {
     "metro-react-native-babel-preset": "^0.51.1"
   },

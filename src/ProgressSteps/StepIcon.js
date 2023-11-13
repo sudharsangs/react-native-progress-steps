@@ -14,7 +14,7 @@ class StepIcon extends Component {
           borderRadius: 20,
           backgroundColor: this.props.activeStepIconColor,
           borderColor: this.props.activeStepIconBorderColor,
-          borderWidth: 5,
+          borderWidth: this.props.borderWidth,
           bottom: 2,
         },
         circleText: {
