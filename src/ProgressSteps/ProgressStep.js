@@ -17,9 +17,12 @@ class ProgressStep extends Component {
   };
 
   onPreviousStep = () => {
-    // Changes active index and calls previous function passed by parent
     this.props.onPrevious && this.props.onPrevious();
     this.props.setActiveStep(this.props.activeStep - 1);
+  };
+
+  onCancel = () => {
+    this.props.onCancel && this.props.onCancel();
   };
 
   onSubmit = () => {
@@ -80,9 +83,36 @@ class ProgressStep extends Component {
     if (this.props.previousBtnDisabled) textStyle.push(disabledBtnText);
 
     return (
-      <TouchableOpacity style={btnStyle} onPress={this.onPreviousStep} disabled={this.props.previousBtnDisabled}>
+      this.props.activeStep !== 0 ? <TouchableOpacity style={btnStyle} onPress={this.onPreviousStep} disabled={this.props.previousBtnDisabled}>
         <Text style={textStyle}>{this.props.activeStep === 0 ? '' : this.props.previousBtnText}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> : null
+    );
+  };
+
+  renderCancelButton = () => {
+    const btnStyle = {
+      textAlign: 'center',
+      padding: 8,
+      ...this.props.previousBtnStyle
+    };
+
+    const btnTextStyle = {
+      color: '#007AFF',
+      fontSize: 18,
+      ...this.props.previousBtnTextStyle
+    };
+
+    const disabledBtnText = {
+      color: '#cdcdcd'
+    };
+
+    let textStyle = [btnTextStyle];
+    if (this.props.previousBtnDisabled) textStyle.push(disabledBtnText);
+
+    return (
+      this.props.activeStep === 0 ? <TouchableOpacity style={btnStyle} onPress={this.onCancel} disabled={this.props.cancelBtnDisabled}>
+        <Text style={textStyle}>Cancel</Text>
+      </TouchableOpacity> : null
     );
   };
 
@@ -91,9 +121,10 @@ class ProgressStep extends Component {
     const viewProps = this.props.viewProps || {};
     const isScrollable = this.props.scrollable;
     const buttonRow = this.props.removeBtnRow ? null : (
-      <ProgressButtons 
-        renderNextButton={this.renderNextButton} 
-        renderPreviousButton={this.renderPreviousButton} 
+      <ProgressButtons
+        renderNextButton={this.renderNextButton}
+        renderPreviousButton={this.renderPreviousButton}
+        renderCancelButton={this.renderCancelButton}
       />
     );
 
